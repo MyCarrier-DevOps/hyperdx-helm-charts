@@ -10,6 +10,7 @@ hyperdx:
   logLevel: "info"
   usageStatsEnabled: true
   ingress:
+    enabled: false
     host: "localhost"  # Production domain
     proxyBodySize: "100m"
     proxyConnectTimeout: "60"
