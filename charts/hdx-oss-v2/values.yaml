@@ -9,6 +9,18 @@ hyperdx:
   appUrl: "http://localhost"
   logLevel: "info"
   usageStatsEnabled: true
+  annotations: {}
+    # myAnnotation: "myValue"
+  labels: {}
+    # myLabel: "myValue"
+  env: []
+    # - name: CLICKHOUSE_USER
+    #   value: abc
+    # - name: test
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: release-name-hdx-oss-v2-app-secrets
+    #       key: api-key
   ingress:
     enabled: false
     host: "localhost"  # Production domain
