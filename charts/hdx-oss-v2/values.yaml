@@ -6,8 +6,10 @@ hyperdx:
   image: "hyperdx/hyperdx:2-beta"
   apiKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   apiPort: 8000
-  appPort: 3000
-  appUrl: "http://localhost"
+  app:
+    port: 3000
+    url: "http://localhost"
+    appendPort: false  # Set to true if you want to append the port to the URL in generated links
   logLevel: "info"
   usageStatsEnabled: true
   annotations: {}

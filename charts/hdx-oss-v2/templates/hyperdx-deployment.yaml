@@ -11,7 +11,7 @@ metadata:
     {{- end -}}
     {{- end }}
 spec:
-  replicas: {{ .Values.hyperdx.replicas | default 1 }}
+  replicas: 1
   selector:
     matchLabels:
       {{- include "hdx-oss.selectorLabels" . | nindent 6 }}
@@ -34,10 +34,13 @@ spec:
           command: ['sh', '-c', 'until nc -z {{ include "hdx-oss.fullname" . }}-mongodb {{ .Values.mongodb.port }}; do echo waiting for mongodb; sleep 2; done;']
       containers:
         - name: app
-          image: "{{ .Values.hyperdx.image }}"
+          image: "{{ .Values.images.hdx.repository }}:{{ .Values.images.hdx.tag }}"
+          securityContext:
+            capabilities:
+              add: ["NET_ADMIN", "NET_BIND_SERVICE"]
           ports:
             - name: app-port
-              containerPort: {{ .Values.hyperdx.appPort }}
+              containerPort: {{ .Values.hyperdx.app.port }}
             - name: api-port
               containerPort: {{ .Values.hyperdx.apiPort }}
           envFrom:
